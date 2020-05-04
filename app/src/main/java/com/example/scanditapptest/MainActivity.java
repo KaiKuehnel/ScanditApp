@@ -16,19 +16,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity<barcodeCapture> extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     DataCaptureContext dataCaptureContext = DataCaptureContext.forLicenseKey("ASjufRD6DiSIAOhIOhGVBwYUhh35E9nxfnuypBgN5CkeEQTaWlK5H7FXGWLoU4tk3W3WNvFUo8f6W8FXF3HHMH55NhWjebSEhis5n1suPjo/GUXDzmoH6VQvERqKeaBr0nRFweV/BH+Ld1aPKWqw0Ohv7NWnX4I43luW0V1tTojRcjI3wV/SjZ1x/+5jMsHsMUOmqX9KwOvMS10NXUrxapdWmoklQ1Gd11DQe+Eik38BbX2TjGn4UURqVCW4ZT1klnw40s5oW0PkWlhwUXYjCqhon1KudeEW30QwJdp6nZipcbPzDikzYDBCHq5pZ4m0d1DF1nQg1vEfV9Ofm0pWOY4W2Jz0d2/0+Sixg7V0ouq7W6ucqUone4EskDlrVyBR72u1UHlklSf1XbiLKlb+eXxQqz92Zo+Ygnk0msgW2wQsLxlVRHy+khJuxpdVJggC0BCGDE5y1WNzMEq9vnjIEkVb+R0fbpK/2lJOFN5QJHEIe0W8DmS6+nQVpGjoSU34lQEVTnI5Al5yFRMC+74zWnqBLOxBqtPIhZufEWIElCzzM0QnRUp6og6LKjaxy+g2ZhUSvNl1cQG/sBXs1NeXCJkgvQpELkZ6/yxW6CahuxqQtHv2sEFiq3y1PrEPXXxKw8QTT7Nq0PceOiBX5+uudESMlaiT/jsEn+YWzi5W+LZq22sQLcu75jv6XZGaFQwiBpKuW9ymWtI+gKQy8OTnqkBBZ7m4hAYKN7H8TujKcINIfmUM0GTaAHkW/mmYU8QKVdJeSedyIFrPi/N5qhSYJ3cde3VKkg+uM4AbQ0FaNfPANOarFu2mq3Ou/3v+wjvSmU+CE7uJo4Ula9OBRQng3slYbAmF+DfkLWOHqk5F+YXYge1lJ2DP8DcAS1uqhXlCAwGWwQ+bv7o+ElVi6y5cOXP4XNLSX7CFeM+Ln2i862x6j/GBTw7XdaOvsVFW2ICsyvth+Jn7OMOnknfXDR8jBTqLJ/VudkHIiXkD/uFUO2sIqARrakUQaFNNmKsNJUNcjUEHYIzInfSk0j5cya/lLw+xCAT11hp8fRwLq2QN+qS3ZixQbm+IAUd9ydlrnCpnvtG94qif5+vkf0uwHjgyBNfrKJtzVGTv7gAtacnelRxNsHYuPjWN6Gh31A2CcpNB3Hji2lbiPxhShki80I+IAejidpEye5u5oWn2xtJ1AAsWrfMqXitK0KdUg7E=");
-
-    BarcodeCaptureSettings settings = new BarcodeCaptureSettings();
-settings.enableSymbology(Symbology.CODE128, true)
-settings.enableSymbology(Symbology.CODE39, true)
-settings.enableSymbology(Symbology.QR, true)
-settings.enableSymbology(Symbology.EAN8, true)
-settings.enableSymbology(Symbology.UPCE, true)
-settings.enableSymbology(Symbology.EAN13_UPCA, true)
-
-    barcodeCapture = BarcodeCapture.forDataCaptureContext(dataCaptureContext, settings)
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,5 +56,18 @@ settings.enableSymbology(Symbology.EAN13_UPCA, true)
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void initializeSettings(){
+        BarcodeCaptureSettings settings = new BarcodeCaptureSettings();
+
+        settings.enableSymbology(Symbology.CODE128, true);
+        settings.enableSymbology(Symbology.CODE39, true);
+        settings.enableSymbology(Symbology.QR, true);
+        settings.enableSymbology(Symbology.EAN8, true);
+        settings.enableSymbology(Symbology.UPCE, true);
+        settings.enableSymbology(Symbology.EAN13_UPCA, true);
+
+        BarcodeCapture barcodeCapture  = BarcodeCapture.forDataCaptureContext(dataCaptureContext, settings);
     }
 }
